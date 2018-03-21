@@ -2,10 +2,11 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  March 2018.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Noelle Hale.  March 2018.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
+import math
 
 
 def main():
@@ -63,6 +64,8 @@ def run_test_problem3():
 #   -- Etc. writing chunks of code and testing them ** ONE AT A TIME. **
 #
 ###############################################################################
+
+
 def problem3(rect, n, window):
     """
     See    problem3_pictures.pdf     for pictures that may help you
@@ -93,12 +96,24 @@ def problem3(rect, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function, TESTING each step as you go.
+    # DONE: 2. Implement and test this function, TESTING each step as you go.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
 
+    rect.attach_to(window)
+    window.render()
+    center = rg.Point(rect.get_lower_right_corner().x, rect.get_lower_right_corner().y)
+    radius = rect.get_height() / 2
+    for k in range(n):
+        circle = rg.Circle(center, radius)
+        circle.attach_to(window)
+        center.x = center.x + ((2 * radius) * math.sin(45))
+        center.y = center.y + ((2 * radius) * math.cos(45))
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
+
 main()

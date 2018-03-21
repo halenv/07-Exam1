@@ -196,7 +196,7 @@ def problem1a(a, b, threshold):
               returns 109 + 110 + 111 + 112 + 120 + 121 + 130,  which is 813
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # IMPORTANT NOTE
@@ -216,7 +216,7 @@ def problem1a(a, b, threshold):
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement at least 4 tests of the problem1b function.
+    # DONE: 4. Implement at least 4 tests of the problem1b function.
     #   Note that you CANNOT use  problem1b(1)  or  problem1b(2)  as tests, per
     #   the specification below that says that the argument must be at least 3.
     # -------------------------------------------------------------------------
@@ -225,6 +225,29 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
+    # Test 1: 3
+    expected = 3
+    answer = problem1b(3)
+    print('Test 1 expected:', expected)
+    print('         actual:',  answer)
+
+    # Test 2: 4
+    expected = 64
+    answer = problem1b(4)
+    print('Test 2 expected:', expected)
+    print('         actual:', answer)
+
+    # Test 3: 5
+    expected = 143
+    answer = problem1b(5)
+    print('Test 3 expected:', expected)
+    print('         actual:', answer)
+
+    # Test 4: 8
+    expected = 682
+    answer = problem1b(8)
+    print('Test 4 expected:', expected)
+    print('         actual:', answer)
 
 ###############################################################################
 # IMPORTANT note: in the following problem,
@@ -232,6 +255,8 @@ def run_test_problem1b():
 #    **  the appropriate functions that are defined above,
 #    **  possibly including ones you have written.
 ###############################################################################
+
+
 def problem1b(r):
     """
     What comes in:  An integer r that is at least 3.
@@ -250,8 +275,17 @@ def problem1b(r):
     #          See the IMPORTANT NOTE just before the DEF above.
     # -------------------------------------------------------------------------
 
+    total = 0
+    n = (r ** 2) - r
+    for k in range(n + 1):
+        if product_of_digits(k + r) <= r:
+            total = total + (k + r)
+
+    return total
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
+
 main()
